@@ -39,7 +39,7 @@ public class SummonerDataActivity extends ListActivity {
 
 	public ArrayList<String> key_array;
 
-	private int currently_covered_game_number = 1;
+	private int currently_covered_game_number = 2;
 	/*
 	 * URL for tracking champion name by champion ID
 	 */
@@ -245,11 +245,13 @@ public class SummonerDataActivity extends ListActivity {
 
 							Log.d("SummonerID, TeamID, ChampID", summonerId
 									+ ", " + teamId + ", " + champion_Name);
+							
+							String develop_key = (i==0)? develop_key_rocket: develop_key_rantol;
 
 							String URL_Find_Summoner_Name = "https://prod.api.pvp.net/api/lol/na/v1.3/summoner/"
 									+ summonerId
 									+ "?api_key="
-									+ develop_key_rocket;
+									+ develop_key;
 
 							String JSON_Summoner_Name = sh.makeServiceCall(
 									URL_Find_Summoner_Name, ServiceHandler.GET);
