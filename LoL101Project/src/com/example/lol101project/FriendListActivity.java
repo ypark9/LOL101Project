@@ -77,7 +77,7 @@ public class FriendListActivity extends Activity {
 					confirmDelete(list);
 				} else {
 					Selected_Summoner_Name = list.getName();
-//					showDialog(DIALOG_ALERT);
+					showDialog(DIALOG_ALERT);
 //					// Do the onItemClick action
 //					// Go to Item page
 //					Intent intent = new Intent(getApplicationContext(), SummonerDataActivity.class);
