@@ -26,31 +26,14 @@ public class SummonerDataActivity extends ListActivity {
 	ArrayList<HashMap<String, String>> Game_List;
 	private HashMap<String, String> champion_Name_ID;
 
-	/*
-	 * bottom URL are for tracking recent games of "specific" user.
-	 */
-	private final static String url_GAME_part1 = "https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/";
-	private final static String url_GAME_part2 = "/recent?api_key=82968033-b737-453c-aff5-b2b8c81fd7d3";
-
-	private final static String develop_key_inu = "82968033-b737-453c-aff5-b2b8c81fd7d3";
-	private final static String develop_key_rocket = "feef8114-1b45-4b48-8e58-56847d1b5fc6";
-	private final static String develop_key_rantol = "2a7807f1-3d3d-42bf-acab-970da47031a7";
-	private final static String develop_key_rybink = "";
-
+	// ArrayList that will be containing Develop Keys
 	public ArrayList<String> key_array;
-
-	private int currently_covered_game_number = 1;
-	/*
-	 * URL for tracking champion name by champion ID
-	 */
-	private String url_Champion_code = "https://prod.api.pvp.net/api/lol/na/v1.1/champion?api_key="
-			+ develop_key_inu;
-	private String Game_URL = "";
+	private String game_URL = "";
 	private String url_forFinding_AccoundID = "";
 	private String TAG_GAMES = "games";
 	private String TAG_GAME_ID = "gameId";
 	private String TAG_GAME_MODE = "gameMode";
-	private String TAG_GAME_SUBTYPE = "subType";
+//	private String TAG_GAME_SUBTYPE = "subType";
 	// private String TAG_GAME_TYPE = "gameType";
 	private String TAG_FELLOWPLAYERS = "fellowPlayers";
 	private String TAG_CHAMPID = "championId";
@@ -66,36 +49,50 @@ public class SummonerDataActivity extends ListActivity {
 		setContentView(R.layout.activity_item);
 
 		String accountID = "";
-
 		mFriendList = getIntent().getStringExtra("friendlist");
 		Log.d(accountID, mFriendList);
-		url_forFinding_AccoundID = "https://prod.api.pvp.net/api/lol/na/v1.3/summoner/by-name/"
-				+ mFriendList + "?api_key=" + develop_key_inu;
+		url_forFinding_AccoundID = AllStaticValues.USING_LEAGUE_API_VERSION_1_3
+				+ "summoner/by-name/" + mFriendList
+				+ AllStaticValues.API_KEY_IS + AllStaticValues.DEVELOP_KEY_INU;
 		Log.d(accountID, accountID);
 		setTitle(mFriendList);
 
 		Game_List = new ArrayList<HashMap<String, String>>();
 
-	try {
-		GetDevelopKeyArray(key_array, develop_key_rantol, develop_key_rocket, develop_key_inu);
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		try {
+			GetDevelopKeyArray(key_array, AllStaticValues.DEVELOP_KEY_RANTOL,
+					AllStaticValues.DEVELOP_KEY_ROCKET,
+					AllStaticValues.DEVELOP_KEY_INU);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		// Calling async task to get json
+		// Calling ASYNC task to get JSON
 		new GetHistory().execute();
 	}
 
+	/**
+	 * This method is for adding key to array list.
+	 * 
+	 * @param arraylist
+	 *            array List that you want to input keys
+	 * @param key1
+	 *            target 1
+	 * @param key2
+	 *            target 2
+	 * @param key3
+	 *            target 3
+	 * @return ArrayList that contains keys
+	 * @throws Exception
+	 *             if ArrayList is not properly made, exception will be thrown
+	 */
 	public ArrayList<String> GetDevelopKeyArray(ArrayList<String> arraylist,
 			String key1, String key2, String key3) throws Exception {
-
 		arraylist = new ArrayList<String>();
 		arraylist.add(key1);
 		arraylist.add(key2);
 		arraylist.add(key3);
-
-
 		if (arraylist.isEmpty()) {
 			throw new Exception();
 		} else {
@@ -106,7 +103,7 @@ public class SummonerDataActivity extends ListActivity {
 	}
 
 	/**
-	 * Async task class to get json by making HTTP call
+	 * ASYNC task class to get JSON by making HTTP call
 	 * */
 	private class GetHistory extends AsyncTask<Void, Void, Void> {
 
@@ -127,8 +124,8 @@ public class SummonerDataActivity extends ListActivity {
 			 * Creating service handler class instance
 			 */
 			ServiceHandler sh = new ServiceHandler();
-			String JSON_Champion_Name = sh.makeServiceCall(url_Champion_code,
-					ServiceHandler.GET);
+			String JSON_Champion_Name = sh.makeServiceCall(
+					AllStaticValues.url_Champion_code, ServiceHandler.GET);
 			/*
 			 * YP: initialize Hash map for champion's name using RIOT API to
 			 * find current available champions from JSON result and save those
@@ -143,12 +140,12 @@ public class SummonerDataActivity extends ListActivity {
 				JSONObject json_Champion_code = new JSONObject(
 						JSON_Champion_Name);
 				JSONArray SummonerID = json_Champion_code
-						.getJSONArray("champions");
+						.getJSONArray(AllStaticValues.CHAMPIONS);
 
 				for (int i = 0; i < SummonerID.length(); i++) {
 					JSONObject champ = SummonerID.getJSONObject(i);
-					champ_Name = champ.getString("name");
-					champ_ID = champ.getString("id");
+					champ_Name = champ.getString(AllStaticValues.NAME);
+					champ_ID = champ.getString(AllStaticValues.ID);
 
 					champion_Name_ID.put(champ_ID, champ_Name);
 					Log.d("champ name ", champ_Name);
@@ -169,7 +166,7 @@ public class SummonerDataActivity extends ListActivity {
 			try {
 				JSONObject jsonObj = new JSONObject(JSON_AccountID);
 				JSONObject SummonerID = jsonObj.getJSONObject(mFriendList);
-				id = SummonerID.getString("id");
+				id = SummonerID.getString(AllStaticValues.ID);
 				// String name = SummonerID.getString("name");
 				// String profileIconId = SummonerID.getString("profileIconId");
 				// String summonerLevel = SummonerID.getString("summonerLevel");
@@ -184,9 +181,10 @@ public class SummonerDataActivity extends ListActivity {
 			 * GAMES after that process is just same with above section for
 			 * Champion names
 			 */
-			Game_URL = url_GAME_part1 + id + url_GAME_part2;
+			game_URL = AllStaticValues.URL_GAME_PART1 + id
+					+ AllStaticValues.URL_GAME_PART2;
 
-			String jsonStr = sh.makeServiceCall(Game_URL, ServiceHandler.GET);
+			String jsonStr = sh.makeServiceCall(game_URL, ServiceHandler.GET);
 
 			Log.d("Response: ", "> " + jsonStr);
 
@@ -205,18 +203,19 @@ public class SummonerDataActivity extends ListActivity {
 					 */
 					// TODO need to figure out how to get more game from API
 					// Since current API allows only 10 queries in 10 seconds.
-					for (int i = 0; i < currently_covered_game_number; i++) {
+					for (int i = 0; i < AllStaticValues.GAME_CAN_BE_HANDLED; i++) {
 
 						String gameID = games.getJSONObject(i)
 								.getString(TAG_GAME_ID).toString();
 						String gameMode = games.getJSONObject(i)
 								.getString(TAG_GAME_MODE).toString();
-						String subType = games.getJSONObject(i)
-								.getString(TAG_GAME_SUBTYPE).toString();
+						// String subType = games.getJSONObject(i)
+						// .getString(TAG_GAME_SUBTYPE).toString();
 						Log.d("gameID, Mode, subype", gameID + ", " + gameMode
 								+ "");
 
-						HashMap<String, String> Game_Information = new HashMap<String, String>();
+						// HashMap<String, String> Game_Information = new
+						// HashMap<String, String>();
 						JSONArray fellowPlayers = games.getJSONObject(i)
 								.getJSONArray(TAG_FELLOWPLAYERS);
 
@@ -246,10 +245,11 @@ public class SummonerDataActivity extends ListActivity {
 							Log.d("SummonerID, TeamID, ChampID", summonerId
 									+ ", " + teamId + ", " + champion_Name);
 
-							String URL_Find_Summoner_Name = "https://prod.api.pvp.net/api/lol/na/v1.3/summoner/"
+							String URL_Find_Summoner_Name = AllStaticValues.USING_LEAGUE_API_VERSION_1_3
+									+ "summoner/"
 									+ summonerId
-									+ "?api_key="
-									+ develop_key_rocket;
+									+ AllStaticValues.API_KEY_IS
+									+ AllStaticValues.DEVELOP_KEY_ROCKET;
 
 							String JSON_Summoner_Name = sh.makeServiceCall(
 									URL_Find_Summoner_Name, ServiceHandler.GET);
