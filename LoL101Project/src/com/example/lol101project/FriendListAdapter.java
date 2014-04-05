@@ -34,13 +34,13 @@ public class FriendListAdapter extends ArrayAdapter<FriendList> {
 
 		descriptionView.setText(friendList.getName());
 
-		if (friendList.isCompleted()) {
-			descriptionView.setPaintFlags(descriptionView.getPaintFlags()
-					| Paint.STRIKE_THRU_TEXT_FLAG);
-		} else {
-			descriptionView.setPaintFlags(descriptionView.getPaintFlags()
-					& (~Paint.STRIKE_THRU_TEXT_FLAG));
-		}
+//		if (friendList.isCompleted()) {
+//			descriptionView.setPaintFlags(descriptionView.getPaintFlags()
+//					| Paint.STRIKE_THRU_TEXT_FLAG);
+//		} else {
+//			descriptionView.setPaintFlags(descriptionView.getPaintFlags()
+//					& (~Paint.STRIKE_THRU_TEXT_FLAG));
+//		}
 
 		return convertView;
 	}

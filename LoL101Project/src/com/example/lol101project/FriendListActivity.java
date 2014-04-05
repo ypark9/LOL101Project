@@ -205,7 +205,7 @@ public class FriendListActivity extends Activity {
 	    DialogInterface.OnClickListener {
 	  public void onClick(DialogInterface dialog, int which) {
 			// Do the onItemClick action
-			Intent intent = new Intent(getApplicationContext(), SummonerDataActivity.class);
+			Intent intent = new Intent(getApplicationContext(), SummonerHistoryActivity.class);
 			intent.putExtra("friendlist", Selected_Summoner_Name);
 			startActivity(intent);
 	  }

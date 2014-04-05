@@ -20,7 +20,7 @@ import android.os.AsyncTask;
  * @author Yoonsoo Park
  * 
  */
-public class SummonerDataSeeker {
+public class SummonerHistorySeeker {
 
 	public final static String OBJECT_NOT_FOUND = "OBJECT_NOT_FOUND";
 	public final static String GET_SUMMONER_BY_NAME = "https://community-league-of-legends.p.mashape.com/api/v1.0/NA/summoner/getSummonerByName/";

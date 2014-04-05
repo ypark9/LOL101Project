@@ -25,7 +25,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/lol101logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 <!--         <meta-data
@@ -54,7 +54,7 @@
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name="com.example.lol101project.SummonerDataActivity"
+            android:name="com.example.lol101project.SummonerHistoryActivity"
             android:label="@string/title_activity_summonerdata"
             android:windowSoftInputMode="stateHidden" >
         </activity>

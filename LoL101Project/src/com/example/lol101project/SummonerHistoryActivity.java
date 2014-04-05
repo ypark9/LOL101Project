@@ -18,9 +18,9 @@ import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 
-public class SummonerDataActivity extends ListActivity {
+public class SummonerHistoryActivity extends ListActivity {
 
-	SummonerDataSeeker SDS;
+	SummonerHistorySeeker SDS;
 	private String mFriendList;
 	private ProgressDialog pDialog;
 	ArrayList<HashMap<String, String>> Game_List;
@@ -112,7 +112,7 @@ public class SummonerDataActivity extends ListActivity {
 			super.onPreExecute();
 			// Showing progress dialog to inform people that Application is not
 			// frozen but working.
-			pDialog = new ProgressDialog(SummonerDataActivity.this);
+			pDialog = new ProgressDialog(SummonerHistoryActivity.this);
 			pDialog.setMessage("Please wait...");
 			pDialog.setCancelable(false);
 			pDialog.show();
@@ -294,7 +294,7 @@ public class SummonerDataActivity extends ListActivity {
 			/**
 			 * Updating parsed JSON data into ListView
 			 * */
-			ListAdapter adapter = new SimpleAdapter(SummonerDataActivity.this,
+			ListAdapter adapter = new SimpleAdapter(SummonerHistoryActivity.this,
 					Game_List, R.layout.player_info_list, new String[] {
 							TAG_SUMMONERID, TAG_TEAMID, TAG_CHAMPID },
 					new int[] { R.id.SUMMONERID, R.id.TEAMID, R.id.CHAMPID });
