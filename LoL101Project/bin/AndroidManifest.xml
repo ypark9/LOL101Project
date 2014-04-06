@@ -36,7 +36,7 @@
             android:value="AIzaSyAjDA94kZswG4Uxv7XGJHWZhrBoJ0UgI84" /> -->
 
         <activity
-            android:name="com.example.lol101project.FriendListActivity"
+            android:name="com.example.lolproject.FriendListActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
@@ -46,20 +46,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.lol101project.LoginActivity"
+            android:name="com.example.lolproject.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name="com.example.lol101project.RegisterActivity"
+            android:name="com.example.lolproject.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name="com.example.lol101project.SummonerHistoryActivity"
+            android:name="com.example.lolproject.SummonerHistoryActivity"
             android:label="@string/title_activity_summonerdata"
             android:windowSoftInputMode="stateHidden" >
         </activity>
                 <activity
-            android:name="com.example.lol101project.CurrentMatchActivity"
+            android:name="com.example.lolproject.CurrentMatchActivity"
             android:label="@string/title_activity_currentmatch"
             android:windowSoftInputMode="stateHidden" >
         </activity>

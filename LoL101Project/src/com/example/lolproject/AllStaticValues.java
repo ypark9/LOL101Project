@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 public class AllStaticValues {
 

@@ -15,7 +15,7 @@
         android:orientation="horizontal" >
 
         <EditText
-            android:id="@+id/shopping_list_input"
+            android:id="@+id/friend_list_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/shopping_list"
+        android:id="@+id/friend_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

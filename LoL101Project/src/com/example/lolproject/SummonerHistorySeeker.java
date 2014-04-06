@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -50,7 +50,9 @@ public class SummonerHistorySeeker {
 			return OBJECT_NOT_FOUND;
 		}
 	}
-
+	
+	
+	
 	/**
 	 * 
 	 * @author Yoonsoo Park

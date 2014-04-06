@@ -1,5 +1,5 @@
 
-package com.example.lol101project;
+package com.example.lolproject;
  
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

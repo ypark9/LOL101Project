@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import android.util.Log;
 import android.view.MotionEvent;

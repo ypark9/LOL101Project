@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ import com.parse.ParseUser;
 public class FriendListActivity extends Activity {
 
 	protected static final int DIALOG_ALERT = 1101;
-	private EditText mShoppingListInput;
+	private EditText mFriendListInput;
 	private ListView mListView;
 	private FriendListAdapter mAdapter;
 	private String Selected_Summoner_Name = "";
@@ -56,8 +56,8 @@ public class FriendListActivity extends Activity {
 
 		mAdapter = new FriendListAdapter(this, new ArrayList<FriendList>());
 
-		mShoppingListInput = (EditText) findViewById(R.id.shopping_list_input);
-		mListView = (ListView) findViewById(R.id.shopping_list);
+		mFriendListInput = (EditText) findViewById(R.id.friend_list_input);
+		mListView = (ListView) findViewById(R.id.friend_list);
 		mListView.setAdapter(mAdapter);
 
 		final SwipeDetector swipeDetector = new SwipeDetector();
@@ -123,15 +123,15 @@ public class FriendListActivity extends Activity {
 	}
 
 	public void createShoppingList(View v) {
-		if (mShoppingListInput.getText().length() > 0) {
-			FriendList s = new FriendList();
-			s.setACL(new ParseACL(ParseUser.getCurrentUser()));
-			s.setUser(ParseUser.getCurrentUser());
-			s.setName(mShoppingListInput.getText().toString());
-			s.setCompleted(false);
-			s.saveEventually();
-			mAdapter.insert(s, 0);
-			mShoppingListInput.setText("");
+		if (mFriendListInput.getText().length() > 0) {
+			FriendList friendlist = new FriendList();
+			friendlist.setACL(new ParseACL(ParseUser.getCurrentUser()));
+			friendlist.setUser(ParseUser.getCurrentUser());
+			friendlist.setName(mFriendListInput.getText().toString());
+			friendlist.setCompleted(false);
+			friendlist.saveEventually();
+			mAdapter.insert(friendlist, 0);
+			mFriendListInput.setText("");
 		}
 	}
 	

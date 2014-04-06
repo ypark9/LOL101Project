@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.example.lolproject.R;
 
 import com.parse.ParseException;

@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import java.util.ArrayList;
 import java.util.HashMap;

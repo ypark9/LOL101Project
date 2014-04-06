@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name"> LoL project</string>
-    <string name="friend_list_input_hint">Enter a friend List</string>
-    <string name="item_input_hint">Enter an Item</string>
+    <string name="friend_list_input_hint">Enter Summoner ID</string>
+    <string name="item_input_hint">Enter summoner ID</string>
     <string name="create_button">Create</string>
     <string name="add_button">Add</string>
     <string name="map_button">Show Map</string>

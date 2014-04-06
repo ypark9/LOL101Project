@@ -1,10 +1,10 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import java.util.List;
+
 import com.example.lolproject.R;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

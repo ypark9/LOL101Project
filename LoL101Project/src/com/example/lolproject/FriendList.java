@@ -1,4 +1,4 @@
-package com.example.lol101project;
+package com.example.lolproject;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
