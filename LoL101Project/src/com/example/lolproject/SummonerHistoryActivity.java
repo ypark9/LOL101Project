@@ -2,15 +2,19 @@ package com.example.lolproject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.lolproject.R;
+import com.example.lolproject.adapters.CustomListViewAdapter;
+import com.example.lolproject.bean.HistoryRowItem;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,6 +31,10 @@ public class SummonerHistoryActivity extends ListActivity {
 	private ProgressDialog pDialog;
 	ArrayList<HashMap<String, String>> Game_List;
 	private HashMap<String, String> champion_Name_ID;
+
+	// to user customized adapter.
+	ListView listView;
+	List<HistoryRowItem> rowItems;
 
 	// ArrayList that will be containing Develop Keys
 	public ArrayList<String> key_array;
@@ -61,7 +69,7 @@ public class SummonerHistoryActivity extends ListActivity {
 		setTitle(mFriendList);
 
 		Game_List = new ArrayList<HashMap<String, String>>();
-		//to get champion Icon
+		// to get champion Icon
 		CIC = new Champion_Info_Collector();
 
 		try {
@@ -107,49 +115,48 @@ public class SummonerHistoryActivity extends ListActivity {
 
 	}
 
-	
-//	// Array of integers points to images stored in /res/drawable-ldpi/
-//	int[] flags = new int[] { R.drawable.aatrox, R.drawable.ahri,
-//			R.drawable.akali, R.drawable.alistar, R.drawable.amumu,
-//			R.drawable.anivia, R.drawable.annie, R.drawable.ashe,
-//			R.drawable.blitzcrank, R.drawable.brand, R.drawable.caitlyn,
-//			R.drawable.cassiopeia, R.drawable.chogath, R.drawable.corki,
-//			R.drawable.darius, R.drawable.diana, R.drawable.draven,
-//			R.drawable.drmundo, R.drawable.elise, R.drawable.evelynn,
-//			R.drawable.ezreal, R.drawable.fiddlesticks, R.drawable.fiora,
-//			R.drawable.fizz, R.drawable.galio, R.drawable.gangplank,
-//			R.drawable.garen, R.drawable.gragas, R.drawable.graves,
-//			R.drawable.hecarim, R.drawable.heimerdinger,
-//			R.drawable.ic_launcher, R.drawable.irelia, R.drawable.janna,
-//			R.drawable.jarvaniv, R.drawable.jax, R.drawable.jayce,
-//			R.drawable.jinx, R.drawable.karma, R.drawable.karthus,
-//			R.drawable.kassadin, R.drawable.katarina, R.drawable.kayle,
-//			R.drawable.kennen, R.drawable.khazix, R.drawable.kogmaw,
-//			R.drawable.leblanc, R.drawable.leesin, R.drawable.leona,
-//			R.drawable.lissandra, R.drawable.lol101logo, R.drawable.lucian,
-//			R.drawable.lulu, R.drawable.lux, R.drawable.malphite,
-//			R.drawable.malzahar, R.drawable.maokai, R.drawable.masteryi,
-//			R.drawable.missfortune, R.drawable.monkeyking,
-//			R.drawable.mordekaiser, R.drawable.morgana, R.drawable.nami,
-//			R.drawable.nasus, R.drawable.nautilus, R.drawable.nidalee,
-//			R.drawable.nocturne, R.drawable.nunu, R.drawable.olaf,
-//			R.drawable.orianna, R.drawable.pantheon, R.drawable.poppy,
-//			R.drawable.quinn, R.drawable.rammus, R.drawable.renekton,
-//			R.drawable.rengar, R.drawable.riven, R.drawable.rumble,
-//			R.drawable.ryze, R.drawable.sejuani, R.drawable.shaco,
-//			R.drawable.shen, R.drawable.shyvana, R.drawable.singed,
-//			R.drawable.sion, R.drawable.sivir, R.drawable.skarner,
-//			R.drawable.sona, R.drawable.soraka, R.drawable.swain,
-//			R.drawable.syndra, R.drawable.talon, R.drawable.taric,
-//			R.drawable.teemo, R.drawable.thresh, R.drawable.tristana,
-//			R.drawable.trundle, R.drawable.tryndamere, R.drawable.twistedfate,
-//			R.drawable.twitch, R.drawable.udyr, R.drawable.urgot,
-//			R.drawable.varus, R.drawable.vayne, R.drawable.veigar,
-//			R.drawable.vi, R.drawable.viktor, R.drawable.vladimir,
-//			R.drawable.volibear, R.drawable.warwick, R.drawable.xerath,
-//			R.drawable.xinzhao, R.drawable.yasuo, R.drawable.yorick,
-//			R.drawable.zac, R.drawable.zed, R.drawable.ziggs,
-//			R.drawable.zilean, R.drawable.zyra };
+	// // Array of integers points to images stored in /res/drawable-ldpi/
+	// int[] flags = new int[] { R.drawable.aatrox, R.drawable.ahri,
+	// R.drawable.akali, R.drawable.alistar, R.drawable.amumu,
+	// R.drawable.anivia, R.drawable.annie, R.drawable.ashe,
+	// R.drawable.blitzcrank, R.drawable.brand, R.drawable.caitlyn,
+	// R.drawable.cassiopeia, R.drawable.chogath, R.drawable.corki,
+	// R.drawable.darius, R.drawable.diana, R.drawable.draven,
+	// R.drawable.drmundo, R.drawable.elise, R.drawable.evelynn,
+	// R.drawable.ezreal, R.drawable.fiddlesticks, R.drawable.fiora,
+	// R.drawable.fizz, R.drawable.galio, R.drawable.gangplank,
+	// R.drawable.garen, R.drawable.gragas, R.drawable.graves,
+	// R.drawable.hecarim, R.drawable.heimerdinger,
+	// R.drawable.ic_launcher, R.drawable.irelia, R.drawable.janna,
+	// R.drawable.jarvaniv, R.drawable.jax, R.drawable.jayce,
+	// R.drawable.jinx, R.drawable.karma, R.drawable.karthus,
+	// R.drawable.kassadin, R.drawable.katarina, R.drawable.kayle,
+	// R.drawable.kennen, R.drawable.khazix, R.drawable.kogmaw,
+	// R.drawable.leblanc, R.drawable.leesin, R.drawable.leona,
+	// R.drawable.lissandra, R.drawable.lol101logo, R.drawable.lucian,
+	// R.drawable.lulu, R.drawable.lux, R.drawable.malphite,
+	// R.drawable.malzahar, R.drawable.maokai, R.drawable.masteryi,
+	// R.drawable.missfortune, R.drawable.monkeyking,
+	// R.drawable.mordekaiser, R.drawable.morgana, R.drawable.nami,
+	// R.drawable.nasus, R.drawable.nautilus, R.drawable.nidalee,
+	// R.drawable.nocturne, R.drawable.nunu, R.drawable.olaf,
+	// R.drawable.orianna, R.drawable.pantheon, R.drawable.poppy,
+	// R.drawable.quinn, R.drawable.rammus, R.drawable.renekton,
+	// R.drawable.rengar, R.drawable.riven, R.drawable.rumble,
+	// R.drawable.ryze, R.drawable.sejuani, R.drawable.shaco,
+	// R.drawable.shen, R.drawable.shyvana, R.drawable.singed,
+	// R.drawable.sion, R.drawable.sivir, R.drawable.skarner,
+	// R.drawable.sona, R.drawable.soraka, R.drawable.swain,
+	// R.drawable.syndra, R.drawable.talon, R.drawable.taric,
+	// R.drawable.teemo, R.drawable.thresh, R.drawable.tristana,
+	// R.drawable.trundle, R.drawable.tryndamere, R.drawable.twistedfate,
+	// R.drawable.twitch, R.drawable.udyr, R.drawable.urgot,
+	// R.drawable.varus, R.drawable.vayne, R.drawable.veigar,
+	// R.drawable.vi, R.drawable.viktor, R.drawable.vladimir,
+	// R.drawable.volibear, R.drawable.warwick, R.drawable.xerath,
+	// R.drawable.xinzhao, R.drawable.yasuo, R.drawable.yorick,
+	// R.drawable.zac, R.drawable.zed, R.drawable.ziggs,
+	// R.drawable.zilean, R.drawable.zyra };
 
 	/**
 	 * ASYNC task class to get JSON by making HTTP call
@@ -317,11 +324,16 @@ public class SummonerHistoryActivity extends ListActivity {
 							players.put(TAG_CHAMPID, champion_Name);
 							players.put(TAG_TEAMID, teamId);
 							players.put(TAG_SUMMONERID, summoner_Name);
-							players.put(TAG_CHAMPICON, Integer.toString(CIC.champIconCollector(champion_Name)));
-
-							
-							Log.d("TAG_CHAMPICON, TeamID, ChampID", Integer.toString(CIC.champIconCollector(champion_Name))
-									+ ", " + teamId + ", " + champion_Name);
+//							players.put(TAG_CHAMPICON, Integer.toString(CIC
+//									.champIconCollector(champion_Name)));
+//
+//							Log.d("TAG_CHAMPICON, TeamID, ChampID",
+//									Integer.toString(CIC
+//											.champIconCollector(champion_Name))
+//											+ ", "
+//											+ teamId
+//											+ ", "
+//											+ champion_Name);
 							// adding contact to contact list
 							Game_List.add(players);
 						}
@@ -345,29 +357,44 @@ public class SummonerHistoryActivity extends ListActivity {
 			if (pDialog.isShowing())
 				pDialog.dismiss();
 
-//			// Keys used in HashMap
-//			String[] from = { "TAG_CHAMPICON", "TAG_SUMMONERID", "TAG_TEAMID" };
-//			
-//			// Ids of views in listview_layout
-//	        int[] to = { R.id.flag, R.id.txt, R.id.cur};
-//	        
-//	     // Instantiating an adapter to store each items
-//	        // R.layout.listview_layout defines the layout of each item
-//	        SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), Game_List, R.layout.summoner_history, from, to);
-//	        
-//	        // Getting a reference to listview of main.xml layout file
-//	        ListView listView = ( ListView ) findViewById(R.id.listview);
+			rowItems = new ArrayList<HistoryRowItem>();
+			for(int i = 0; i < Game_List.size(); i++){
+				HistoryRowItem hItem = new HistoryRowItem(CIC.champIconCollector(Game_List.get(i).get(TAG_CHAMPID)), Game_List.get(i).get(TAG_SUMMONERID), Game_List.get(i).get(TAG_TEAMID));
+				rowItems.add(hItem);
+			}
+			
+			listView = (ListView) findViewById(R.id.listview);
+			CustomListViewAdapter adapter = new CustomListViewAdapter(SummonerHistoryActivity.this, R.layout.summoner_history, rowItems);
+			listView.setAdapter(adapter);
+			
+			// // Keys used in HashMap
+			// String[] from = { "TAG_CHAMPICON", "TAG_SUMMONERID", "TAG_TEAMID"
+			// };
+			//
+			// // Ids of views in listview_layout
+			// int[] to = { R.id.flag, R.id.txt, R.id.cur};
+			//
+			// // Instantiating an adapter to store each items
+			// // R.layout.listview_layout defines the layout of each item
+			// SimpleAdapter adapter = new SimpleAdapter(getBaseContext(),
+			// Game_List, R.layout.summoner_history, from, to);
+			//
+			// // Getting a reference to listview of main.xml layout file
 			/**
-			 * Updating parsed JSON data into ListView
-			 * */
-			ListAdapter adapter = new SimpleAdapter(
-					SummonerHistoryActivity.this, Game_List,
-					R.layout.player_info_list, new String[] { TAG_SUMMONERID,
-							TAG_TEAMID, TAG_CHAMPID }, new int[] {
-							R.id.SUMMONERID, R.id.TEAMID, R.id.CHAMPID });
+			 * ListView listView = ( ListView ) findViewById(R.id.listview);
+			 * 
+			 * //Updating parsed JSON data into ListView
+			 * 
+			 * ListAdapter adapter = new SimpleAdapter(
+			 * SummonerHistoryActivity.this, Game_List,
+			 * R.layout.player_info_list, new String[] { TAG_SUMMONERID,
+			 * TAG_TEAMID, TAG_CHAMPID }, new int[] { R.id.SUMMONERID,
+			 * R.id.TEAMID, R.id.CHAMPID });
+			 * 
+			 * setListAdapter(adapter);
+			 */
 
-			setListAdapter(adapter);
-//	        listView.setAdapter(adapter);
+			// listView.setAdapter(adapter);
 		}
 	}
 

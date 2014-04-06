@@ -150,16 +150,16 @@ int id center_vertical 0x7f040008
 int id clip_horizontal 0x7f04000f
 int id clip_vertical 0x7f04000e
 int id container 0x7f04001c
-int id cur 0x7f04002f
+int id desc 0x7f04002f
 int id end 0x7f040011
 int id error_messages 0x7f040017
 int id fill 0x7f04000d
 int id fill_horizontal 0x7f04000b
 int id fill_vertical 0x7f040009
-int id flag 0x7f04002d
 int id friend_list 0x7f040014
 int id friend_list_input 0x7f040012
 int id horizontal 0x7f040000
+int id icon 0x7f04002d
 int id item_description 0x7f040024
 int id item_list 0x7f040016
 int id item_price 0x7f040025
@@ -181,8 +181,8 @@ int id sign_up 0x7f040020
 int id start 0x7f040010
 int id store_description 0x7f04002b
 int id store_list 0x7f040022
+int id title 0x7f04002e
 int id top 0x7f040004
-int id txt 0x7f04002e
 int id vertical 0x7f040001
 int layout activity_friend_list 0x7f030000
 int layout activity_item 0x7f030001
@@ -212,6 +212,7 @@ int string create_button 0x7f070003
 int string dont_have_an_account_label 0x7f070013
 int string friend_list_input_hint 0x7f070001
 int string hello_world 0x7f070016
+int string image 0x7f070017
 int string item_input_hint 0x7f070002
 int string map_button 0x7f070005
 int string password_label 0x7f070010
