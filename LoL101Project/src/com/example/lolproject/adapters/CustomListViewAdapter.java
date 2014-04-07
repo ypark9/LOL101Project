@@ -3,7 +3,7 @@ package com.example.lolproject.adapters;
 import java.util.List;
 
 import com.example.lolproject.R;
-import com.example.lolproject.bean.HistoryRowItem;
+import com.example.lolproject.bean.HistoryBean;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,12 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomListViewAdapter extends ArrayAdapter<HistoryRowItem> {
+public class CustomListViewAdapter extends ArrayAdapter<HistoryBean> {
 
 	Context context;
 
 	public CustomListViewAdapter(Context context, int resourceId,
-			List<HistoryRowItem> items) {
+			List<HistoryBean> items) {
 		super(context, resourceId, items);
 		this.context = context;
 	}
@@ -32,7 +32,7 @@ public class CustomListViewAdapter extends ArrayAdapter<HistoryRowItem> {
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder = null;
-		HistoryRowItem rowItem = getItem(position);
+		HistoryBean rowItem = getItem(position);
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 

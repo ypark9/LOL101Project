@@ -1,8 +1,11 @@
-package com.example.lolproject;
+package com.example.lolproject.adapters;
 
 import java.util.List;
 
 import com.example.lolproject.R;
+import com.example.lolproject.R.id;
+import com.example.lolproject.R.layout;
+import com.example.lolproject.bean.FriendListBean;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,11 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class FriendListAdapter extends ArrayAdapter<FriendList> {
+public class FriendListAdapter extends ArrayAdapter<FriendListBean> {
 	private Context mContext;
-	private List<FriendList> mShoppingList;
+	private List<FriendListBean> mShoppingList;
 
-	public FriendListAdapter(Context context, List<FriendList> objects) {
+	public FriendListAdapter(Context context, List<FriendListBean> objects) {
 		super(context, R.layout.shopping_list_row, objects);
 		this.mContext = context;
 		this.mShoppingList = objects;
@@ -27,7 +30,7 @@ public class FriendListAdapter extends ArrayAdapter<FriendList> {
 			convertView = mLayoutInflater.inflate(R.layout.shopping_list_row, null);
 		}
 
-		FriendList friendList = mShoppingList.get(position);
+		FriendListBean friendList = mShoppingList.get(position);
 
 		TextView descriptionView = (TextView) convertView
 				.findViewById(R.id.shopping_list_name);

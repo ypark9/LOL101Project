@@ -9,8 +9,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.lolproject.R;
+import com.example.lolproject.R.id;
+import com.example.lolproject.R.layout;
 import com.example.lolproject.adapters.CustomListViewAdapter;
-import com.example.lolproject.bean.HistoryRowItem;
+import com.example.lolproject.bean.HistoryBean;
+import com.example.lolproject.dataCollecters.Champion_Info_Collecter;
+import com.example.lolproject.dataCollecters.ServiceHandler;
+import com.example.lolproject.dataCollecters.SummonerHistoryCollecter;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -25,8 +30,8 @@ import android.widget.SimpleAdapter;
 
 public class SummonerHistoryActivity extends ListActivity {
 
-	SummonerHistorySeeker SDS;
-	Champion_Info_Collector CIC;
+	SummonerHistoryCollecter SDS;
+	Champion_Info_Collecter CIC;
 	private String mFriendList;
 	private ProgressDialog pDialog;
 	ArrayList<HashMap<String, String>> Game_List;
@@ -34,7 +39,7 @@ public class SummonerHistoryActivity extends ListActivity {
 
 	// to user customized adapter.
 	ListView listView;
-	List<HistoryRowItem> rowItems;
+	List<HistoryBean> rowItems;
 
 	// ArrayList that will be containing Develop Keys
 	public ArrayList<String> key_array;
@@ -70,7 +75,7 @@ public class SummonerHistoryActivity extends ListActivity {
 
 		Game_List = new ArrayList<HashMap<String, String>>();
 		// to get champion Icon
-		CIC = new Champion_Info_Collector();
+		CIC = new Champion_Info_Collecter();
 
 		try {
 			GetDevelopKeyArray(key_array, AllStaticValues.DEVELOP_KEY_RANTOL,
@@ -357,9 +362,9 @@ public class SummonerHistoryActivity extends ListActivity {
 			if (pDialog.isShowing())
 				pDialog.dismiss();
 
-			rowItems = new ArrayList<HistoryRowItem>();
+			rowItems = new ArrayList<HistoryBean>();
 			for(int i = 0; i < Game_List.size(); i++){
-				HistoryRowItem hItem = new HistoryRowItem(CIC.champIconCollector(Game_List.get(i).get(TAG_CHAMPID)), Game_List.get(i).get(TAG_SUMMONERID), Game_List.get(i).get(TAG_TEAMID));
+				HistoryBean hItem = new HistoryBean(CIC.champIconCollector(Game_List.get(i).get(TAG_CHAMPID)), Game_List.get(i).get(TAG_SUMMONERID), Game_List.get(i).get(TAG_TEAMID));
 				rowItems.add(hItem);
 			}
 			

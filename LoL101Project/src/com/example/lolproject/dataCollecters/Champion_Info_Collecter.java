@@ -1,4 +1,4 @@
-package com.example.lolproject;
+package com.example.lolproject.dataCollecters;
 
 import java.util.HashMap;
 
@@ -7,9 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.lolproject.R;
+import com.example.lolproject.R.drawable;
+
 import android.util.Log;
 
-public class Champion_Info_Collector {
+public class Champion_Info_Collecter {
 
 	public static HashMap<String, String> champion_Name_ID;
 	private final static String url_Champion_code = "https://prod.api.pvp.net/api/lol/na/v1.1/champion?api_key=82968033-b737-453c-aff5-b2b8c81fd7d3";

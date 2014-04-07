@@ -19,6 +19,11 @@ import android.widget.Toast;
 import android.app.AlertDialog.Builder;
 
 import com.example.lolproject.R;
+import com.example.lolproject.R.id;
+import com.example.lolproject.R.layout;
+import com.example.lolproject.R.menu;
+import com.example.lolproject.adapters.FriendListAdapter;
+import com.example.lolproject.bean.FriendListBean;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -44,7 +49,7 @@ public class FriendListActivity extends Activity {
 		Parse.initialize(this, "xOS5VQLKI6CApi4PRL8yiEodz7ewzmMdkLwmzLZN",
 				"F5Pe0zPXgN5TWbnFT0zhO1dfK0fF90sKb9aist0d");
 		ParseAnalytics.trackAppOpened(getIntent());
-		ParseObject.registerSubclass(FriendList.class);
+		ParseObject.registerSubclass(FriendListBean.class);
 
 
 		ParseUser currentUser = ParseUser.getCurrentUser();
@@ -54,7 +59,7 @@ public class FriendListActivity extends Activity {
 			finish();
 		}
 
-		mAdapter = new FriendListAdapter(this, new ArrayList<FriendList>());
+		mAdapter = new FriendListAdapter(this, new ArrayList<FriendListBean>());
 
 		mFriendListInput = (EditText) findViewById(R.id.friend_list_input);
 		mListView = (ListView) findViewById(R.id.friend_list);
@@ -70,7 +75,7 @@ public class FriendListActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				FriendList list = mAdapter.getItem(position);
+				FriendListBean list = mAdapter.getItem(position);
 				
 				if (swipeDetector.swipeDetected()) {
 					// Do the onSwipe action
@@ -104,12 +109,12 @@ public class FriendListActivity extends Activity {
 	}
 
 	public void updateData() {
-		ParseQuery<FriendList> query = ParseQuery
-				.getQuery(FriendList.class);
+		ParseQuery<FriendListBean> query = ParseQuery
+				.getQuery(FriendListBean.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
-		query.findInBackground(new FindCallback<FriendList>() {
+		query.findInBackground(new FindCallback<FriendListBean>() {
 			@Override
-			public void done(List<FriendList> lists, ParseException error) {
+			public void done(List<FriendListBean> lists, ParseException error) {
 
 				if (lists != null) {
 					mAdapter.clear();
@@ -124,7 +129,7 @@ public class FriendListActivity extends Activity {
 
 	public void createShoppingList(View v) {
 		if (mFriendListInput.getText().length() > 0) {
-			FriendList friendlist = new FriendList();
+			FriendListBean friendlist = new FriendListBean();
 			friendlist.setACL(new ParseACL(ParseUser.getCurrentUser()));
 			friendlist.setUser(ParseUser.getCurrentUser());
 			friendlist.setName(mFriendListInput.getText().toString());
@@ -135,7 +140,7 @@ public class FriendListActivity extends Activity {
 		}
 	}
 	
-	public void confirmDelete(final FriendList list) {
+	public void confirmDelete(final FriendListBean list) {
 		AlertDialog.Builder alertDialogBuilder = 
 				new AlertDialog.Builder(FriendListActivity.this);
 		

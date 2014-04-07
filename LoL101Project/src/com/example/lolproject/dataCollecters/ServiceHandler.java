@@ -1,5 +1,5 @@
 
-package com.example.lolproject;
+package com.example.lolproject.dataCollecters;
  
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

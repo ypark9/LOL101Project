@@ -1,12 +1,12 @@
 package com.example.lolproject.bean;
 
-public class HistoryRowItem {
+public class HistoryBean {
 
 	private int imageId;
 	private String title;
 	private String desc;
 	
-	public HistoryRowItem(int imageId, String title, String desc) {
+	public HistoryBean(int imageId, String title, String desc) {
 		this.imageId = imageId;
 		this.title = title;
 		this.desc = desc;

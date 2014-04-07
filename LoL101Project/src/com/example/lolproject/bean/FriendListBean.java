@@ -1,12 +1,12 @@
-package com.example.lolproject;
+package com.example.lolproject.bean;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 @ParseClassName("FriendList")
-public class FriendList extends ParseObject {
-	public FriendList() {
+public class FriendListBean extends ParseObject {
+	public FriendListBean() {
 
 	}
 
