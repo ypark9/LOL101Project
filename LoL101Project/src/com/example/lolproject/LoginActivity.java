@@ -8,11 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.lolproject.R;
-import com.example.lolproject.R.id;
-import com.example.lolproject.R.layout;
-import com.example.lolproject.R.menu;
-
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;

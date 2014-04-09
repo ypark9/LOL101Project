@@ -8,30 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.lolproject.R;
-import com.example.lolproject.R.id;
-import com.example.lolproject.R.layout;
-import com.example.lolproject.adapters.CustomListViewAdapter;
-import com.example.lolproject.bean.HistoryBean;
-import com.example.lolproject.dataCollecters.Champion_Info_Collecter;
-import com.example.lolproject.dataCollecters.ServiceHandler;
-import com.example.lolproject.dataCollecters.SummonerHistoryCollecter;
-
 import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+
+import com.example.lolproject.adapters.CustomListViewAdapter;
+import com.example.lolproject.bean.HistoryBean;
+import com.example.lolproject.dataCollecters.ChampionDataCollecter;
+import com.example.lolproject.dataCollecters.ServiceHandler;
+import com.example.lolproject.dataCollecters.SummonerHistoryCollecter;
 
 public class SummonerHistoryActivity extends ListActivity {
 
 	SummonerHistoryCollecter SDS;
-	Champion_Info_Collecter CIC;
+	ChampionDataCollecter CIC;
 	private String mFriendList;
 	private ProgressDialog pDialog;
 	ArrayList<HashMap<String, String>> Game_List;
@@ -54,8 +48,9 @@ public class SummonerHistoryActivity extends ListActivity {
 	private String TAG_CHAMPID = "championId";
 	private String TAG_TEAMID = "teamId";
 	private String TAG_SUMMONERID = "summonerId";
-	private String TAG_CHAMPICON = "championIcon";
+	// private String TAG_CHAMPICON = "championIcon";
 	private JSONArray games;
+	// private JSONObject summonerOtherInfo;
 	// fellowPlayers JSONArray
 	JSONArray fellowPlayers;
 
@@ -65,8 +60,11 @@ public class SummonerHistoryActivity extends ListActivity {
 		setContentView(R.layout.activity_item);
 
 		String accountID = "";
+		// getting summoner ID that we searched in previous activity comes from
+		// this.
 		mFriendList = getIntent().getStringExtra("friendlist");
 		Log.d(accountID, mFriendList);
+
 		url_forFinding_AccoundID = AllStaticValues.USING_LEAGUE_API_VERSION_1_3
 				+ "summoner/by-name/" + mFriendList
 				+ AllStaticValues.API_KEY_IS + AllStaticValues.DEVELOP_KEY_INU;
@@ -75,7 +73,7 @@ public class SummonerHistoryActivity extends ListActivity {
 
 		Game_List = new ArrayList<HashMap<String, String>>();
 		// to get champion Icon
-		CIC = new Champion_Info_Collecter();
+		CIC = new ChampionDataCollecter();
 
 		try {
 			GetDevelopKeyArray(key_array, AllStaticValues.DEVELOP_KEY_RANTOL,
@@ -174,7 +172,7 @@ public class SummonerHistoryActivity extends ListActivity {
 			// Showing progress dialog to inform people that Application is not
 			// frozen but working.
 			pDialog = new ProgressDialog(SummonerHistoryActivity.this);
-			pDialog.setMessage("Please wait...");
+			pDialog.setMessage("History...");
 			pDialog.setCancelable(false);
 			pDialog.show();
 		}
@@ -257,8 +255,7 @@ public class SummonerHistoryActivity extends ListActivity {
 					 * Getting JSON Array node
 					 */
 					games = jsonObj_gameInfo.getJSONArray(TAG_GAMES);
-
-					Log.d("fist json array", games.length() + "");
+					Log.d("fist json array,", games.length() + ", ");
 					/*
 					 * looping through All Contacts
 					 */
@@ -270,10 +267,15 @@ public class SummonerHistoryActivity extends ListActivity {
 								.getString(TAG_GAME_ID).toString();
 						String gameMode = games.getJSONObject(i)
 								.getString(TAG_GAME_MODE).toString();
+						String thisSummonerChamp = games.getJSONObject(i)
+								.getString(TAG_CHAMPID).toString();
+						String thisSummonerTeam = games.getJSONObject(i)
+								.getString(TAG_TEAMID).toString();
 						// String subType = games.getJSONObject(i)
 						// .getString(TAG_GAME_SUBTYPE).toString();
-						Log.d("gameID, Mode, subype", gameID + ", " + gameMode
-								+ "");
+						Log.d("gameID, Mode, champion, team", gameID + ", "
+								+ gameMode + ", " + thisSummonerChamp + ", "
+								+ thisSummonerTeam);
 
 						// HashMap<String, String> Game_Information = new
 						// HashMap<String, String>();
@@ -283,14 +285,25 @@ public class SummonerHistoryActivity extends ListActivity {
 						Log.d("fellowPlayers json array",
 								fellowPlayers.length() + "");
 
-						for (int j = 0; j < fellowPlayers.length(); j++) {
+						int totalGameMember = fellowPlayers.length() + 1;
+						for (int j = 0; j < totalGameMember; j++) {
 
-							JSONObject d = fellowPlayers.getJSONObject(j);
-							String championId = d.getString(TAG_CHAMPID);
+							String championId = "";
+							String teamId = "";
+							String summonerId = "";
+							if (j == totalGameMember - 1) {
+								summonerId = mFriendList;
+								championId = thisSummonerChamp;
+								teamId = thisSummonerTeam;
+							} else {
+								JSONObject d = fellowPlayers.getJSONObject(j);
+								// Log.d("champid", champion_Name);
+								teamId = d.getString(TAG_TEAMID);
+								championId = d.getString(TAG_CHAMPID);
+								summonerId = d.getString(TAG_SUMMONERID);
+							}
 							String champion_Name = champion_Name_ID
 									.get(championId);
-							// Log.d("champid", champion_Name);
-							String teamId = d.getString(TAG_TEAMID);
 
 							/*
 							 * to Show which member was in players team, and who
@@ -301,26 +314,34 @@ public class SummonerHistoryActivity extends ListActivity {
 							} else {
 								teamId = "Enemy";
 							}
-							String summonerId = d.getString(TAG_SUMMONERID);
 
+							String summoner_Name = "";
+							if (j != totalGameMember - 1) {
+
+								String URL_Find_Summoner_Name = AllStaticValues.USING_LEAGUE_API_VERSION_1_3
+										+ "summoner/"
+										+ summonerId
+										+ AllStaticValues.API_KEY_IS
+										+ AllStaticValues.DEVELOP_KEY_ROCKET;
+
+								String JSON_Summoner_Name = sh.makeServiceCall(
+										URL_Find_Summoner_Name,
+										ServiceHandler.GET);
+
+								JSONObject json_obj_accoundID = new JSONObject(
+										JSON_Summoner_Name);
+
+								JSONObject json_id = json_obj_accoundID
+										.getJSONObject(summonerId);
+								summoner_Name = json_id.getString("name");
+							} else if (j == totalGameMember - 1) {
+								summoner_Name = summonerId;
+							} else {
+								System.exit(2);
+							}
+							// log checking..
 							Log.d("SummonerID, TeamID, ChampID", summonerId
 									+ ", " + teamId + ", " + champion_Name);
-
-							String URL_Find_Summoner_Name = AllStaticValues.USING_LEAGUE_API_VERSION_1_3
-									+ "summoner/"
-									+ summonerId
-									+ AllStaticValues.API_KEY_IS
-									+ AllStaticValues.DEVELOP_KEY_ROCKET;
-
-							String JSON_Summoner_Name = sh.makeServiceCall(
-									URL_Find_Summoner_Name, ServiceHandler.GET);
-
-							JSONObject json_obj_accoundID = new JSONObject(
-									JSON_Summoner_Name);
-
-							JSONObject json_id = json_obj_accoundID
-									.getJSONObject(summonerId);
-							String summoner_Name = json_id.getString("name");
 
 							// tmp Hash Map for single contact
 							HashMap<String, String> players = new HashMap<String, String>();
@@ -329,16 +350,7 @@ public class SummonerHistoryActivity extends ListActivity {
 							players.put(TAG_CHAMPID, champion_Name);
 							players.put(TAG_TEAMID, teamId);
 							players.put(TAG_SUMMONERID, summoner_Name);
-//							players.put(TAG_CHAMPICON, Integer.toString(CIC
-//									.champIconCollector(champion_Name)));
-//
-//							Log.d("TAG_CHAMPICON, TeamID, ChampID",
-//									Integer.toString(CIC
-//											.champIconCollector(champion_Name))
-//											+ ", "
-//											+ teamId
-//											+ ", "
-//											+ champion_Name);
+
 							// adding contact to contact list
 							Game_List.add(players);
 						}
@@ -363,15 +375,21 @@ public class SummonerHistoryActivity extends ListActivity {
 				pDialog.dismiss();
 
 			rowItems = new ArrayList<HistoryBean>();
-			for(int i = 0; i < Game_List.size(); i++){
-				HistoryBean hItem = new HistoryBean(CIC.champIconCollector(Game_List.get(i).get(TAG_CHAMPID)), Game_List.get(i).get(TAG_SUMMONERID), Game_List.get(i).get(TAG_TEAMID));
+			for (int i = 0; i < Game_List.size(); i++) {
+				HistoryBean hItem = new HistoryBean(
+						CIC.champIconCollector(Game_List.get(i)
+								.get(TAG_CHAMPID)), Game_List.get(i).get(
+								TAG_SUMMONERID), Game_List.get(i).get(
+								TAG_TEAMID));
 				rowItems.add(hItem);
 			}
-			
+
 			listView = (ListView) findViewById(R.id.listview);
-			CustomListViewAdapter adapter = new CustomListViewAdapter(SummonerHistoryActivity.this, R.layout.summoner_history, rowItems);
+			CustomListViewAdapter adapter = new CustomListViewAdapter(
+					SummonerHistoryActivity.this, R.layout.summoner_history,
+					rowItems);
 			listView.setAdapter(adapter);
-			
+
 			// // Keys used in HashMap
 			// String[] from = { "TAG_CHAMPICON", "TAG_SUMMONERID", "TAG_TEAMID"
 			// };

@@ -7,11 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.lolproject.R;
-import com.example.lolproject.R.layout;
-import com.example.lolproject.dataCollecters.Champion_Info_Collecter;
-import com.example.lolproject.dataCollecters.ServiceHandler;
-
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,12 +14,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.lolproject.dataCollecters.ChampionDataCollecter;
+import com.example.lolproject.dataCollecters.ServiceHandler;
+
 public class CurrentMatchActivity extends ListActivity {
 
 	private String mFriendList;
 	private ProgressDialog pDialog;
 	ArrayList<HashMap<String, String>> Game_List;
-	Champion_Info_Collecter CIC = new Champion_Info_Collecter();
+	ChampionDataCollecter CIC = new ChampionDataCollecter();
 	String URL_CURRENT_GAME = "https://community-league-of-legends.p.mashape.com/api/v1.0/NA/summoner/retrieveInProgressSpectatorGameInfo/";
 
 

@@ -2,17 +2,15 @@ package com.example.lolproject.dataCollecters;
 
 import java.util.HashMap;
 
-import org.apache.http.client.CircularRedirectException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.lolproject.R;
-import com.example.lolproject.R.drawable;
-
 import android.util.Log;
 
-public class Champion_Info_Collecter {
+import com.example.lolproject.R;
+
+public class ChampionDataCollecter {
 
 	public static HashMap<String, String> champion_Name_ID;
 	private final static String url_Champion_code = "https://prod.api.pvp.net/api/lol/na/v1.1/champion?api_key=82968033-b737-453c-aff5-b2b8c81fd7d3";
@@ -166,6 +164,7 @@ public class Champion_Info_Collecter {
 		cIcon.put("varus", R.drawable.varus);
 		cIcon.put("vayne", R.drawable.vayne);
 		cIcon.put("veigar", R.drawable.veigar);
+		cIcon.put("velkoz", R.drawable.velkoz);
 		cIcon.put("vi", R.drawable.vi);
 		cIcon.put("viktor", R.drawable.viktor);
 		cIcon.put("vladimir", R.drawable.vladimir);
