@@ -220,5 +220,5 @@ public class FriendListActivity extends Activity {
 			intent.putExtra("friendlist", Selected_Summoner_Name);
 			startActivity(intent);
 	  }
-	} 
+	}
 }

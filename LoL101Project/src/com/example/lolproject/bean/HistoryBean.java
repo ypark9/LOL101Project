@@ -3,13 +3,13 @@ package com.example.lolproject.bean;
 public class HistoryBean {
 
 	private int imageId;
-	private String title;
-	private String desc;
+	private String summonerId;
+	private String teamId;
 	
-	public HistoryBean(int imageId, String title, String desc) {
+	public HistoryBean(int imageId, String summonerId, String teamId) {
 		this.imageId = imageId;
-		this.title = title;
-		this.desc = desc;
+		this.summonerId = summonerId;
+		this.teamId = teamId;
 	}
 	
 	public int getImageId(){
@@ -21,22 +21,22 @@ public class HistoryBean {
 	}
 	
 	public String getDesc(){
-		return desc;
+		return teamId;
 	}
 	public void setDesc(String desc){
-		this.desc = desc;
+		this.teamId = desc;
 	}
 	
 	public String getTitle(){
-		return title;
+		return summonerId;
 	}
 	
 	public void setTitle(String title){
-		this.title = title;
+		this.summonerId = title;
 		
 	}
 	
 	public String toString(){
-		return title + "\n" + desc;
+		return summonerId;
 	}
 }

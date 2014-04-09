@@ -10,11 +10,17 @@ import org.json.JSONObject;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.lolproject.adapters.CustomListViewAdapter;
 import com.example.lolproject.bean.HistoryBean;
@@ -48,6 +54,8 @@ public class SummonerHistoryActivity extends ListActivity {
 	private String TAG_CHAMPID = "championId";
 	private String TAG_TEAMID = "teamId";
 	private String TAG_SUMMONERID = "summonerId";
+	private String TAG_NAME = "name";
+
 	// private String TAG_CHAMPICON = "championIcon";
 	private JSONArray games;
 	// private JSONObject summonerOtherInfo;
@@ -117,49 +125,6 @@ public class SummonerHistoryActivity extends ListActivity {
 		}
 
 	}
-
-	// // Array of integers points to images stored in /res/drawable-ldpi/
-	// int[] flags = new int[] { R.drawable.aatrox, R.drawable.ahri,
-	// R.drawable.akali, R.drawable.alistar, R.drawable.amumu,
-	// R.drawable.anivia, R.drawable.annie, R.drawable.ashe,
-	// R.drawable.blitzcrank, R.drawable.brand, R.drawable.caitlyn,
-	// R.drawable.cassiopeia, R.drawable.chogath, R.drawable.corki,
-	// R.drawable.darius, R.drawable.diana, R.drawable.draven,
-	// R.drawable.drmundo, R.drawable.elise, R.drawable.evelynn,
-	// R.drawable.ezreal, R.drawable.fiddlesticks, R.drawable.fiora,
-	// R.drawable.fizz, R.drawable.galio, R.drawable.gangplank,
-	// R.drawable.garen, R.drawable.gragas, R.drawable.graves,
-	// R.drawable.hecarim, R.drawable.heimerdinger,
-	// R.drawable.ic_launcher, R.drawable.irelia, R.drawable.janna,
-	// R.drawable.jarvaniv, R.drawable.jax, R.drawable.jayce,
-	// R.drawable.jinx, R.drawable.karma, R.drawable.karthus,
-	// R.drawable.kassadin, R.drawable.katarina, R.drawable.kayle,
-	// R.drawable.kennen, R.drawable.khazix, R.drawable.kogmaw,
-	// R.drawable.leblanc, R.drawable.leesin, R.drawable.leona,
-	// R.drawable.lissandra, R.drawable.lol101logo, R.drawable.lucian,
-	// R.drawable.lulu, R.drawable.lux, R.drawable.malphite,
-	// R.drawable.malzahar, R.drawable.maokai, R.drawable.masteryi,
-	// R.drawable.missfortune, R.drawable.monkeyking,
-	// R.drawable.mordekaiser, R.drawable.morgana, R.drawable.nami,
-	// R.drawable.nasus, R.drawable.nautilus, R.drawable.nidalee,
-	// R.drawable.nocturne, R.drawable.nunu, R.drawable.olaf,
-	// R.drawable.orianna, R.drawable.pantheon, R.drawable.poppy,
-	// R.drawable.quinn, R.drawable.rammus, R.drawable.renekton,
-	// R.drawable.rengar, R.drawable.riven, R.drawable.rumble,
-	// R.drawable.ryze, R.drawable.sejuani, R.drawable.shaco,
-	// R.drawable.shen, R.drawable.shyvana, R.drawable.singed,
-	// R.drawable.sion, R.drawable.sivir, R.drawable.skarner,
-	// R.drawable.sona, R.drawable.soraka, R.drawable.swain,
-	// R.drawable.syndra, R.drawable.talon, R.drawable.taric,
-	// R.drawable.teemo, R.drawable.thresh, R.drawable.tristana,
-	// R.drawable.trundle, R.drawable.tryndamere, R.drawable.twistedfate,
-	// R.drawable.twitch, R.drawable.udyr, R.drawable.urgot,
-	// R.drawable.varus, R.drawable.vayne, R.drawable.veigar,
-	// R.drawable.vi, R.drawable.viktor, R.drawable.vladimir,
-	// R.drawable.volibear, R.drawable.warwick, R.drawable.xerath,
-	// R.drawable.xinzhao, R.drawable.yasuo, R.drawable.yorick,
-	// R.drawable.zac, R.drawable.zed, R.drawable.ziggs,
-	// R.drawable.zilean, R.drawable.zyra };
 
 	/**
 	 * ASYNC task class to get JSON by making HTTP call
@@ -333,7 +298,7 @@ public class SummonerHistoryActivity extends ListActivity {
 
 								JSONObject json_id = json_obj_accoundID
 										.getJSONObject(summonerId);
-								summoner_Name = json_id.getString("name");
+								summoner_Name = json_id.getString(TAG_NAME);
 							} else if (j == totalGameMember - 1) {
 								summoner_Name = summonerId;
 							} else {
@@ -389,6 +354,22 @@ public class SummonerHistoryActivity extends ListActivity {
 					SummonerHistoryActivity.this, R.layout.summoner_history,
 					rowItems);
 			listView.setAdapter(adapter);
+
+			listView.setOnItemClickListener(new OnItemClickListener() {
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					// TODO Auto-generated method stub
+					int itemPostition = position;
+					String summonerId = parent.getItemAtPosition(itemPostition).toString().toLowerCase();
+//					Toast.makeText(getApplicationContext(),
+//							summonerId+"" + itemPostition + " " ,
+//							Toast.LENGTH_SHORT).show();
+					getApplicationContext().stopService(getIntent());
+					Intent intent = new Intent(getApplicationContext(), SummonerHistoryActivity.class);
+					intent.putExtra("friendlist", summonerId);
+					startActivity(intent);
+				}
+			});
 
 			// // Keys used in HashMap
 			// String[] from = { "TAG_CHAMPICON", "TAG_SUMMONERID", "TAG_TEAMID"
