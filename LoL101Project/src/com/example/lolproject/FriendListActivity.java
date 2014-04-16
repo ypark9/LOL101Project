@@ -221,4 +221,18 @@ public class FriendListActivity extends Activity {
 			startActivity(intent);
 	  }
 	}
+	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent(getApplicationContext(),
+				HomePageActivity.class);
+		startActivity(intent);
+		finish();
+	}
 }

@@ -44,11 +44,6 @@
             android:name="com.example.lolproject.FriendListActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.lolproject.LoginActivity"
@@ -67,6 +62,16 @@
             android:name="com.example.lolproject.CurrentMatchActivity"
             android:label="@string/title_activity_currentmatch"
             android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="com.example.lolproject.HomePageActivity"
+            android:label="@string/title_activity_HomePage"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!--
               <activity
