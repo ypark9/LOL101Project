@@ -13,7 +13,7 @@ import android.view.Menu;
 public class CounterSelect extends DialogFragment {
 
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		String options[] = {"Good Against","Bad Against","Good With","Counter Tips"};
+		String options[] = {"Good Against","Bad Against","Good With"};
 	    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	    builder.setTitle("Champion Info")
 	           .setItems(options, new DialogInterface.OnClickListener() {

@@ -29,11 +29,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <!--
+        
              <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        -->
+        
         <!--
              <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -63,6 +63,8 @@
             android:label="@string/title_activity_currentmatch"
             android:windowSoftInputMode="stateHidden" >
         </activity>
+        <activity android:name="com.google.android.gms.ads.AdActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <activity
             android:name="com.example.lolproject.HomePageActivity"
             android:label="@string/title_activity_HomePage"
@@ -87,6 +89,30 @@
             android:label="@string/title_activity_store_specific" >
         </activity>
         -->
+        <activity
+            android:name="com.example.lolproject.ChampionList"
+            android:label="@string/title_activity_champion_list" >
+        </activity>
+        <activity
+            android:name="com.example.lolproject.CounterSelect"
+            android:label="@string/title_activity_counter_select" >
+        </activity>
+        <activity
+            android:name="com.example.lolproject.GoodAgainst"
+            android:label="@string/title_activity_good_against" >
+        </activity>
+        <activity
+            android:name="com.example.lolproject.BadAgainst"
+            android:label="@string/title_activity_bad_against" >
+        </activity>
+        <activity
+            android:name="com.example.lolproject.GoodWith"
+            android:label="@string/title_activity_good_with" >
+        </activity>
+        <activity
+            android:name="com.example.lolproject.CounterTips"
+            android:label="@string/title_activity_counter_tips" >
+        </activity>
     </application>
 
 </manifest>

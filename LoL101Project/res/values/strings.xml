@@ -26,5 +26,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="image"> champion Icon</string>
     <string name="title_activity_HomePage"> Bring it On! </string>
+    <string name="title_activity_champion_list">ChampionList</string>
+    <string name="title_activity_counter_select">CounterSelect</string>
+    <string name="title_activity_good_against">GoodAgainst</string>
+    <string name="title_activity_bad_against">BadAgainst</string>
+    <string name="title_activity_good_with">GoodWith</string>
+    <string name="title_activity_counter_tips">CounterTips</string>
 
 </resources>

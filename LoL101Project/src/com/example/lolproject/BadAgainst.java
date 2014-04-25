@@ -50,7 +50,26 @@ public class BadAgainst extends Activity {
 				
 				int champID = CIC.champIconCollector(champions.get(i).getString("Name").replaceAll("\\s", ""));
 				String champName = champions.get(i).getString("Name");
-				String champClass = champions.get(i).getString("primaryClass")+" / "+champions.get(i).getString("secondaryClass");
+				String champClass = champions.get(i).getString("primaryClass")+" / "+champions.get(i).getString("secondaryClass")+"\n";
+				List<ParseObject> counterItem = champions.get(i).getList("counterItems");
+				String counterItemString = "\nCounter Items: ";
+				for(int y=0;y<counterItem.size();y++)
+				{
+					counterItemString+=counterItem.get(y);
+					if(y!=counterItem.size()-1){
+						counterItemString+=", ";
+					}
+
+				}
+				champClass+=counterItemString+"\n\n";
+				List<ParseObject> counterTips = champions.get(i).getList("counterTips");
+				String counterTipsString = "Counter Tips: ";
+				for(int y=0;y<counterTips.size();y++)
+				{
+					counterTipsString+=counterTips.get(y)+"\n";
+					
+				}
+				champClass+=counterTipsString;
 				HistoryBean hItem = new HistoryBean(champID,champName , champClass);
 				rowItems.add(hItem);
 				}

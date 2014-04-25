@@ -176,8 +176,8 @@ public class FriendListActivity extends Activity {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.action_logout:
+		int itemId = item.getItemId();
+		if (itemId == R.id.action_logout) {
 			ParseUser.logOut();
 			Intent intent = new Intent(this, LoginActivity.class);
 			startActivity(intent);
