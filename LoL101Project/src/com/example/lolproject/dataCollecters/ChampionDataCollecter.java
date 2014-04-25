@@ -74,11 +74,13 @@ public class ChampionDataCollecter {
 		cIcon.put("caitlyn", R.drawable.caitlyn);
 		cIcon.put("cassiopeia", R.drawable.cassiopeia);
 		cIcon.put("chogath", R.drawable.chogath);
+		cIcon.put("cho'gath", R.drawable.chogath);
 		cIcon.put("corki", R.drawable.corki);
 		cIcon.put("darius", R.drawable.darius);
 		cIcon.put("diana", R.drawable.diana);
 		cIcon.put("draven", R.drawable.draven);
 		cIcon.put("drmundo", R.drawable.drmundo);
+		cIcon.put("dr.mundo", R.drawable.drmundo);
 		cIcon.put("elise", R.drawable.elise);
 		cIcon.put("evelynn", R.drawable.evelynn);
 		cIcon.put("ezreal", R.drawable.ezreal);
@@ -105,7 +107,9 @@ public class ChampionDataCollecter {
 		cIcon.put("kayle", R.drawable.kayle);
 		cIcon.put("kennen", R.drawable.kennen);
 		cIcon.put("khazix", R.drawable.khazix);
+		cIcon.put("kha'zix", R.drawable.khazix);
 		cIcon.put("kogmaw", R.drawable.kogmaw);
+		cIcon.put("kog'maw", R.drawable.kogmaw);
 		cIcon.put("leblanc", R.drawable.leblanc);
 		cIcon.put("leesin", R.drawable.leesin);
 		cIcon.put("leona", R.drawable.leona);
@@ -119,6 +123,7 @@ public class ChampionDataCollecter {
 		cIcon.put("masteryi", R.drawable.masteryi);
 		cIcon.put("missfortune", R.drawable.missfortune);
 		cIcon.put("monkeyking", R.drawable.monkeyking);
+		cIcon.put("wukong", R.drawable.monkeyking);
 		cIcon.put("mordekaiser", R.drawable.mordekaiser);
 		cIcon.put("morgana", R.drawable.morgana);
 		cIcon.put("nami", R.drawable.nami);
@@ -165,11 +170,13 @@ public class ChampionDataCollecter {
 		cIcon.put("vayne", R.drawable.vayne);
 		cIcon.put("veigar", R.drawable.veigar);
 		cIcon.put("velkoz", R.drawable.velkoz);
+		cIcon.put("vel'koz", R.drawable.velkoz);
 		cIcon.put("vi", R.drawable.vi);
 		cIcon.put("viktor", R.drawable.viktor);
 		cIcon.put("vladimir", R.drawable.vladimir);
 		cIcon.put("volibear", R.drawable.volibear);
 		cIcon.put("warwick", R.drawable.warwick);
+		
 		cIcon.put("xerath", R.drawable.xerath);
 		cIcon.put("xinzhao", R.drawable.xinzhao);
 		cIcon.put("yasuo", R.drawable.yasuo);
