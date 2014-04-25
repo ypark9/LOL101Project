@@ -41,6 +41,8 @@ public class HomePageActivity extends Activity implements SimpleGestureListener 
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
 			str = "Swipe Left";
+			intent = new Intent(this, ChampionList.class);
+			startActivity(intent);
 			break;
 		case SimpleGestureFilter.SWIPE_DOWN:
 			str = "Swipe Down";
