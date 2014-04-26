@@ -1,4 +1,4 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
 
 import android.app.Activity;
 import android.util.Log;

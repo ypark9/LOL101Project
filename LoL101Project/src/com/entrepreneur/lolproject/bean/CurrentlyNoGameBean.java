@@ -1,4 +1,4 @@
-package com.example.lolproject.bean;
+package com.entrepreneur.lolproject.bean;
 
 public class CurrentlyNoGameBean {
 

@@ -1,4 +1,6 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
+
+import com.example.lolproject.R;
 
 import android.os.Bundle;
 import android.app.Activity;

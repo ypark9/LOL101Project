@@ -1,4 +1,4 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.lolproject.adapters.FriendListAdapter;
-import com.example.lolproject.bean.FriendListBean;
+import com.entrepreneur.lolproject.adapters.FriendListAdapter;
+import com.entrepreneur.lolproject.bean.FriendListBean;
+import com.example.lolproject.R;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;

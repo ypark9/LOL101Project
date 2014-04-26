@@ -1,9 +1,9 @@
-package com.example.lolproject.adapters;
+package com.entrepreneur.lolproject.adapters;
 
 import java.util.List;
 
+import com.entrepreneur.lolproject.bean.HistoryBean;
 import com.example.lolproject.R;
-import com.example.lolproject.bean.HistoryBean;
 
 import android.app.Activity;
 import android.content.Context;

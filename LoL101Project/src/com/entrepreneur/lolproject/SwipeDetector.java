@@ -1,4 +1,4 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
 
 import android.util.Log;
 import android.view.MotionEvent;

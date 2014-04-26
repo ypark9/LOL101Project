@@ -1,4 +1,4 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,10 +19,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.example.lolproject.adapters.CustomListViewAdapter;
-import com.example.lolproject.bean.HistoryBean;
-import com.example.lolproject.dataCollecters.ChampionDataCollecter;
-import com.example.lolproject.dataCollecters.ServiceHandler;
+import com.entrepreneur.lolproject.adapters.CustomListViewAdapter;
+import com.entrepreneur.lolproject.bean.HistoryBean;
+import com.entrepreneur.lolproject.dataCollecters.ChampionDataCollecter;
+import com.entrepreneur.lolproject.dataCollecters.ServiceHandler;
+import com.example.lolproject.R;
 
 public class CurrentMatchActivity extends ListActivity {
 

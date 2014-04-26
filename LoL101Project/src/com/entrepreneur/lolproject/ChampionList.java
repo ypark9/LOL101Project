@@ -1,14 +1,15 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
 
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.lolproject.adapters.CustomListViewAdapter;
-import com.example.lolproject.bean.FriendListBean;
-import com.example.lolproject.bean.HistoryBean;
-import com.example.lolproject.dataCollecters.ChampionDataCollecter;
+import com.entrepreneur.lolproject.adapters.CustomListViewAdapter;
+import com.entrepreneur.lolproject.bean.FriendListBean;
+import com.entrepreneur.lolproject.bean.HistoryBean;
+import com.entrepreneur.lolproject.dataCollecters.ChampionDataCollecter;
+import com.example.lolproject.R;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -29,7 +30,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.example.lolproject.adapters.CustomListViewAdapter;
 
 
 

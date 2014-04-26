@@ -1,11 +1,11 @@
-package com.example.lolproject.adapters;
+package com.entrepreneur.lolproject.adapters;
 
 import java.util.List;
 
+import com.entrepreneur.lolproject.bean.FriendListBean;
 import com.example.lolproject.R;
 import com.example.lolproject.R.id;
 import com.example.lolproject.R.layout;
-import com.example.lolproject.bean.FriendListBean;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -41,32 +41,32 @@
         -->
 
         <activity
-            android:name="com.example.lolproject.FriendListActivity"
+            android:name="com.entrepreneur.lolproject.FriendListActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.example.lolproject.LoginActivity"
+            android:name="com.entrepreneur.lolproject.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name="com.example.lolproject.RegisterActivity"
+            android:name="com.entrepreneur.lolproject.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name="com.example.lolproject.SummonerHistoryActivity"
+            android:name="com.entrepreneur.lolproject.SummonerHistoryActivity"
             android:label="@string/title_activity_summonerdata"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.example.lolproject.CurrentMatchActivity"
+            android:name="com.entrepreneur.lolproject.CurrentMatchActivity"
             android:label="@string/title_activity_currentmatch"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity android:name="com.google.android.gms.ads.AdActivity"
              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <activity
-            android:name="com.example.lolproject.HomePageActivity"
+            android:name="com.entrepreneur.lolproject.HomePageActivity"
             android:label="@string/title_activity_HomePage"
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
@@ -90,27 +90,27 @@
         </activity>
         -->
         <activity
-            android:name="com.example.lolproject.ChampionList"
+            android:name="com.entrepreneur.lolproject.ChampionList"
             android:label="@string/title_activity_champion_list" >
         </activity>
         <activity
-            android:name="com.example.lolproject.CounterSelect"
+            android:name="com.entrepreneur.lolproject.CounterSelect"
             android:label="@string/title_activity_counter_select" >
         </activity>
         <activity
-            android:name="com.example.lolproject.GoodAgainst"
+            android:name="com.entrepreneur.lolproject.GoodAgainst"
             android:label="@string/title_activity_good_against" >
         </activity>
         <activity
-            android:name="com.example.lolproject.BadAgainst"
+            android:name="com.entrepreneur.lolproject.BadAgainst"
             android:label="@string/title_activity_bad_against" >
         </activity>
         <activity
-            android:name="com.example.lolproject.GoodWith"
+            android:name="com.entrepreneur.lolproject.GoodWith"
             android:label="@string/title_activity_good_with" >
         </activity>
         <activity
-            android:name="com.example.lolproject.CounterTips"
+            android:name="com.entrepreneur.lolproject.CounterTips"
             android:label="@string/title_activity_counter_tips" >
         </activity>
     </application>

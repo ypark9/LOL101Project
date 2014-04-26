@@ -1,4 +1,4 @@
-package com.example.lolproject.dataCollecters;
+package com.entrepreneur.lolproject.dataCollecters;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;

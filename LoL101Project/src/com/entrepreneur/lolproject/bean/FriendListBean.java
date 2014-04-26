@@ -1,4 +1,4 @@
-package com.example.lolproject.bean;
+package com.entrepreneur.lolproject.bean;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

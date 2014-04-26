@@ -1,4 +1,4 @@
-package com.example.lolproject.adapters;
+package com.entrepreneur.lolproject.adapters;
 //package com.example.lolproject;
 //
 //import java.util.ArrayList;

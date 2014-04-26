@@ -1,4 +1,4 @@
-package com.example.lolproject;
+package com.entrepreneur.lolproject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
-import com.example.lolproject.SimpleGestureFilter.SimpleGestureListener;
+import com.entrepreneur.lolproject.SimpleGestureFilter.SimpleGestureListener;
+import com.example.lolproject.R;
 
 public class HomePageActivity extends Activity implements SimpleGestureListener {
 
