@@ -208,7 +208,7 @@ public class CurrentMatchActivity extends ListActivity {
 				
 			}else {
 				rowItems = new ArrayList<HistoryBean>();
-				HistoryBean hItem = new HistoryBean(1, "Nobody",error);
+				HistoryBean hItem = new HistoryBean(1, "Sorry, We are not able to find the match.",error);
 				rowItems.add(hItem);
 
 			}
